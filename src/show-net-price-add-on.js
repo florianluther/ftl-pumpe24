@@ -1,19 +1,8 @@
-// ==UserScript==
-// @name         Show the net price on product detail page.
-// @namespace    http://tampermonkey.net/
-// @version      1.0
-// @description  This script calculates the net price of the current product and displays it to the user.
-// @author       Florian Luther
-// @match        https://www.pumpe24.de/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=pumpe24.de
-// @grant        none
-// ==/UserScript==
+"use strict";
 
 const VAT = 19;
 
-(function () {
-    "use strict";
-
+function initialize() {
     const elements = document.getElementsByTagName("script");
     const scripts = Array.from(elements);
     const filteredScripts = scripts.filter(
@@ -62,7 +51,7 @@ const VAT = 19;
 
     newContainer.appendChild(netPrice);
     priceBox.appendChild(newContainer);
-})();
+}
 
 function getSingleNetPrice(price) {
     const vatFactor = 1 + VAT / 100;

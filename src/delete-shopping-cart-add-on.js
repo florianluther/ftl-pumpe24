@@ -1,22 +1,13 @@
-// ==UserScript==
-// @name         Delete all shopping cart items.
-// @namespace    http://tampermonkey.net/
-// @version      1.1
-// @description  This script deletes all items of the current shopping cart.
-// @author       Florian Luther
-// @match        https://www.pumpe24.de/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=pumpe24.de
-// @grant        none
-// ==/UserScript==
+"use strict";
 
-(function () {
-    "use strict";
+function initialize() {
+    addButtonStyle();
+    document.addEventListener("onCustomInitialize", function () {
+        renderDeleteButton();
+    });
+}
 
-    injectButtonStyle();
-    setTimeout(renderDeleteButton, 200);
-})();
-
-function injectButtonStyle() {
+function addButtonStyle() {
     var css =
         ".btn-warn { background-color: #e52d00; } .btn-warn:hover { background-color: #a82b01; }";
     var style = document.createElement("style");

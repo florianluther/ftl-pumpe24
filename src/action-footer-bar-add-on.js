@@ -1,27 +1,18 @@
-// ==UserScript==
-// @name         Inject action footer bar.
-// @namespace    http://tampermonkey.net/
-// @version      1.1
-// @description  This script injects the action footer bar.
-// @author       Florian Luther
-// @match        https://www.pumpe24.de/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=pumpe24.de
-// @grant        none
-// ==/UserScript==
+"use strict";
 
-(function () {
-    "use strict";
-
-    injectFooterStyle();
-    injectActionButtonStyle();
+function initialize() {
+    addFooterStyle();
+    addActionButtonStyle();
 
     addActionBarFooter();
     addActionAnchor();
 
-    setTimeout(renderArticleNumbers, 500);
-})();
+    document.addEventListener("onCustomInitialize", function () {
+        renderArticleNumbers();
+    });
+}
 
-function injectFooterStyle() {
+function addFooterStyle() {
     var css = `.sticky-footer {
         position: fixed;
         left: 0;
@@ -48,7 +39,7 @@ function injectFooterStyle() {
     document.getElementsByTagName("head")[0].appendChild(style);
 }
 
-function injectActionButtonStyle() {
+function addActionButtonStyle() {
     var css =
         ".btn-action { background-color: #95C31D; } .btn-action:hover { background-color: #7EA21F; }";
     var style = document.createElement("style");
@@ -84,19 +75,6 @@ function addActionAnchor() {
 
     a.appendChild(span);
     footer.appendChild(a);
-}
-
-function addActionButton(caption, className, onClick) {
-    const footer = document.getElementsByClassName("sticky-footer")[0];
-
-    const button = document.createElement("button");
-    button.onclick = onClick;
-    button.innerText = caption;
-    button.className = className;
-    button.style.display = "inline";
-    button.style.margin = "6px";
-
-    footer.appendChild(button);
 }
 
 function renderArticleNumbers() {

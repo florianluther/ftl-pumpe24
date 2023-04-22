@@ -1,19 +1,10 @@
-// ==UserScript==
-// @name         Copy the share link on all pages.
-// @namespace    http://tampermonkey.net/
-// @version      1.1
-// @description  This script loads a URL of the current shopping cart and displays it to the user.
-// @author       Florian Luther
-// @match        https://www.pumpe24.de/*
-// @icon         https://www.google.com/s2/favicons?sz=64&domain=pumpe24.de
-// @grant        none
-// ==/UserScript==
+"use strict";
 
-(function () {
-    "use strict";
-
-    setTimeout(renderShareButton, 200);
-})();
+function initialize() {
+    document.addEventListener("onCustomInitialize", function () {
+        renderShareButton();
+    });
+}
 
 function renderShareButton() {
     const shareButton = document.createElement("button");

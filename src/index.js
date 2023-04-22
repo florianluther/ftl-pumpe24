@@ -1,4 +1,5 @@
 "use strict";
+
 function initialize(enableLogging) {
     const onCustomInitialize = function () {
         if (enableLogging) {
