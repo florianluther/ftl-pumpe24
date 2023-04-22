@@ -41,7 +41,6 @@ function renderDeleteButton() {
     deleteButton.style.margin = "6px";
 
     const footer = document.getElementsByClassName("sticky-footer")[0];
-
     footer.appendChild(deleteButton);
 }
 
