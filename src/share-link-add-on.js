@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Copy the share link on all pages.
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  This script loads a URL of the current shopping cart and displays it to the user.
 // @author       Florian Luther
 // @match        https://www.pumpe24.de/*
@@ -12,30 +12,21 @@
 (function () {
     "use strict";
 
-    renderShareButton();
+    setTimeout(renderShareButton, 200);
 })();
 
 function renderShareButton() {
-    const menuCartIcon = document.getElementById("menu-cart-icon");
-    const parentContainer = menuCartIcon.parentNode;
-    parentContainer.style.display = "flex";
-
-    const grandParentContainer = parentContainer.parentNode;
-    grandParentContainer.style.justifyItems = "start";
-
-    const newContainer = document.createElement("div");
-
     const shareButton = document.createElement("button");
     shareButton.onclick = function () {
         getShareUrl();
     };
-    shareButton.innerText = "Share Link";
+    shareButton.innerText = "Warenkorb empfehlen";
     shareButton.className = "btn btn-hover";
     shareButton.style.display = "inline";
     shareButton.style.margin = "6px";
 
-    newContainer.appendChild(shareButton);
-    parentContainer.appendChild(newContainer);
+    const footer = document.getElementsByClassName("sticky-footer")[0];
+    footer.appendChild(shareButton);
 }
 
 function getCartItemIds() {
