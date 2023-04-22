@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Inject action footer bar.
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  This script injects the action footer bar.
 // @author       Florian Luther
 // @match        https://www.pumpe24.de/*
@@ -16,9 +16,9 @@
     injectActionButtonStyle();
 
     addActionBarFooter();
-    addActionButton("Test Button", "btn btn-action", function () {
-        alert("test button clicked");
-    });
+    addActionAnchor();
+
+    setTimeout(renderArticleNumbers, 500);
 })();
 
 function injectFooterStyle() {
@@ -69,6 +69,23 @@ function addActionBarFooter() {
     document.getElementsByTagName("body")[0].appendChild(footer);
 }
 
+function addActionAnchor() {
+    const footer = document.getElementsByClassName("sticky-footer")[0];
+
+    const a = document.createElement("a");
+    a.href = "https://www.pumpe24.de/checkout/cart/";
+    a.className = "btn btn-action";
+    a.style.display = "inline";
+    a.style.margin = "6px";
+    a.style.padding = "0.4rem 1rem";
+
+    const span = document.createElement("span");
+    span.innerText = "Warenkorb bearbeiten";
+
+    a.appendChild(span);
+    footer.appendChild(a);
+}
+
 function addActionButton(caption, className, onClick) {
     const footer = document.getElementsByClassName("sticky-footer")[0];
 
@@ -80,4 +97,26 @@ function addActionButton(caption, className, onClick) {
     button.style.margin = "6px";
 
     footer.appendChild(button);
+}
+
+function renderArticleNumbers() {
+    const storageAsText = localStorage.getItem("mage-cache-storage");
+    const storage = JSON.parse(storageAsText);
+    const items = storage.cart.items;
+
+    for (const item of items) {
+        const sku = item.product_sku;
+    }
+
+    const htmlCartItems = document.getElementsByClassName("cart-items");
+
+    for (let i = 0; i < items.length; i++) {
+        const element = items[i];
+
+        const span = document.createElement("span");
+        span.innerText = `Artikel Nr.: ${element.product_sku}`;
+        span.style.color = "red";
+
+        htmlCartItems[i].childNodes[3].childNodes[1].appendChild(span);
+    }
 }
