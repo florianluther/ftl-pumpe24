@@ -1,6 +1,4 @@
-"use strict";
-
-function initialize(enableLogging) {
+export function initialize(enableLogging: boolean) {
     const onCustomInitialize = function () {
         if (enableLogging) {
             console.log(`Dispatch custom event 'onCustomInitialize'`);
