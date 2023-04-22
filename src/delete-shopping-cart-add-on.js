@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Delete all shopping cart items.
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  This script deletes all items of the current shopping cart.
 // @author       Florian Luther
 // @match        https://www.pumpe24.de/*
@@ -13,7 +13,7 @@
     "use strict";
 
     injectButtonStyle();
-    renderDeleteButton();
+    setTimeout(renderDeleteButton, 200);
 })();
 
 function injectButtonStyle() {
@@ -31,26 +31,18 @@ function injectButtonStyle() {
 }
 
 function renderDeleteButton() {
-    const menuCartIcon = document.getElementById("menu-cart-icon");
-    const parentContainer = menuCartIcon.parentNode;
-    parentContainer.style.display = "flex";
-
-    const grandParentContainer = parentContainer.parentNode;
-    grandParentContainer.style.justifyItems = "start";
-
-    const newContainer = document.createElement("div");
-
     const deleteButton = document.createElement("button");
     deleteButton.onclick = function () {
         deleteCartItems();
     };
-    deleteButton.innerText = "Clear All";
+    deleteButton.innerText = "Warenkorb leeren";
     deleteButton.className = "btn btn-warn";
     deleteButton.style.display = "inline";
     deleteButton.style.margin = "6px";
 
-    newContainer.appendChild(deleteButton);
-    parentContainer.appendChild(newContainer);
+    const footer = document.getElementsByClassName("sticky-footer")[0];
+
+    footer.appendChild(deleteButton);
 }
 
 function deleteCartItems() {
