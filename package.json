@@ -1,0 +1,20 @@
+{
+    "name": "ftl-pumpe24",
+    "version": "1.0.0",
+    "description": "Add-on scripts for pumpe24.de",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc -b tsconfig.json",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/florianluther/ftl-pumpe24.git"
+    },
+    "author": "Florian Luther",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/florianluther/ftl-pumpe24/issues"
+    },
+    "homepage": "https://github.com/florianluther/ftl-pumpe24#readme"
+}
