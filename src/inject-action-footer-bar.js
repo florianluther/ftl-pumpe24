@@ -104,10 +104,6 @@ function renderArticleNumbers() {
     const storage = JSON.parse(storageAsText);
     const items = storage.cart.items;
 
-    for (const item of items) {
-        const sku = item.product_sku;
-    }
-
     const htmlCartItems = document.getElementsByClassName("cart-items");
 
     for (let i = 0; i < items.length; i++) {
