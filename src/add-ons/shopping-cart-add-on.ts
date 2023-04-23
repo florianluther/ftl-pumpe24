@@ -19,11 +19,21 @@ type Item = {
 };
 
 export function initialize(): void {
+    addActionButtonStyle();
     renderEditButton();
 
     document.addEventListener("onCustomInitialize", () => {
         renderArticleNumbers();
     });
+}
+
+function addActionButtonStyle(): void {
+    const css =
+        ".btn-action { background-color: #95C31D; } .btn-action:hover { background-color: #7EA21F; }";
+    const style = document.createElement("style");
+    style.appendChild(document.createTextNode(css));
+
+    document.getElementsByTagName("head")[0].appendChild(style);
 }
 
 function renderEditButton(): void {

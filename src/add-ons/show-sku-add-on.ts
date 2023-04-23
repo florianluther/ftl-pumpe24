@@ -41,10 +41,12 @@ function renderProductSku(sku: string): void {
     const skuLabel = document.createElement("span");
     skuLabel.innerText = `${Translations["de-DE"].sku}: `;
     skuLabel.style.fontWeight = "bold";
+    skuLabel.style.fontSize = "1.5rem";
 
     const skuValue = document.createElement("span");
     skuValue.innerText = sku;
     skuValue.style.fontWeight = "normal";
+    skuValue.style.fontSize = "1.5rem";
 
     const copyButton = document.createElement("button");
     copyButton.onclick = () => {
