@@ -1,4 +1,4 @@
-export function initialize(enableLogging: boolean) {
+export function initialize(enableLogging: boolean): void {
     const onCustomInitialize = function () {
         if (enableLogging) {
             console.log(`Dispatch custom event 'onCustomInitialize'`);
