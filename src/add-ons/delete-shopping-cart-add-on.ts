@@ -25,7 +25,6 @@ function addButtonStyle() {
     const css =
         ".btn-warn { background-color: #e52d00; } .btn-warn:hover { background-color: #a82b01; }";
     const style = document.createElement("style");
-
     style.appendChild(document.createTextNode(css));
 
     document.getElementsByTagName("head")[0].appendChild(style);
@@ -55,7 +54,7 @@ function deleteCartItems() {
     console.log(`Removed all ${ids.length} items from the shopping cart.`);
 }
 
-async function deleteCartItem(itemId: string): Promise<void> {
+function deleteCartItem(itemId: string): void {
     const element = document.querySelector(
         "input[name=form_key]"
     ) as HTMLInputElement;
@@ -66,7 +65,7 @@ async function deleteCartItem(itemId: string): Promise<void> {
 
     const formKey = element.value;
 
-    const response = await fetch("/checkout/sidebar/removeItem/?ajax=1", {
+    fetch("/checkout/sidebar/removeItem/?ajax=1", {
         headers: {
             "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
         },
@@ -74,20 +73,27 @@ async function deleteCartItem(itemId: string): Promise<void> {
         method: "POST",
         mode: "cors",
         credentials: "include",
-    });
+    })
+        .then(function (response) {
+            if (response.ok) {
+                toggleCart();
+            }
 
-    if (response.ok) {
-        toggleCart();
-    }
-
-    if (response.redirected) {
-        window.location.href = response.url;
-    } else if (response.ok) {
-        const reloadCustomerDataEvent = new CustomEvent(
-            "reload-customer-section-data"
-        );
-        window.dispatchEvent(reloadCustomerDataEvent);
-    }
+            return response;
+        })
+        .then(function (response) {
+            if (response.redirected) {
+                window.location.href = response.url;
+            } else if (response.ok) {
+                return response.json();
+            }
+        })
+        .then(function (data) {
+            var reloadCustomerDataEvent = new CustomEvent(
+                "reload-customer-section-data"
+            );
+            window.dispatchEvent(reloadCustomerDataEvent);
+        });
 }
 
 function getCartItemIds(): string[] {
