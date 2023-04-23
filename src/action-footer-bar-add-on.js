@@ -66,9 +66,9 @@ function addActionAnchor() {
     const a = document.createElement("a");
     a.href = "https://www.pumpe24.de/checkout/cart/";
     a.className = "btn btn-action";
-    a.style.display = "inline";
+    a.style.display = "inline-flex";
     a.style.margin = "6px";
-    a.style.padding = "0.4rem 1rem";
+    // a.style.padding = "0.4rem 1rem";
 
     const span = document.createElement("span");
     span.innerText = "Warenkorb bearbeiten";
