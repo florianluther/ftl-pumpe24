@@ -1,4 +1,8 @@
-"use strict";
+const Translations = {
+    "de-DE": {
+        deleteShoppingCart: "Warenkorb leeren",
+    },
+};
 
 type Storage = {
     cart: Cart;
@@ -13,15 +17,15 @@ type Item = {
     product_sku: string;
 };
 
-export function initialize() {
+export function initialize(): void {
     addButtonStyle();
 
-    document.addEventListener("onCustomInitialize", function () {
+    document.addEventListener("onCustomInitialize", () => {
         renderDeleteButton();
     });
 }
 
-function addButtonStyle() {
+function addButtonStyle(): void {
     const css =
         ".btn-warn { background-color: #e52d00; } .btn-warn:hover { background-color: #a82b01; }";
     const style = document.createElement("style");
@@ -30,21 +34,26 @@ function addButtonStyle() {
     document.getElementsByTagName("head")[0].appendChild(style);
 }
 
-function renderDeleteButton() {
+function renderDeleteButton(): void {
+    const footer = document.getElementsByClassName("sticky-footer")[0];
+    if (!footer) {
+        console.log(`There was no footer installed.`);
+        return;
+    }
+
     const deleteButton = document.createElement("button");
-    deleteButton.onclick = function () {
+    deleteButton.onclick = () => {
         deleteCartItems();
     };
-    deleteButton.innerText = "Warenkorb leeren";
+    deleteButton.innerText = Translations["de-DE"].deleteShoppingCart;
     deleteButton.className = "btn btn-warn";
     deleteButton.style.display = "inline";
     deleteButton.style.margin = "6px";
 
-    const footer = document.getElementsByClassName("sticky-footer")[0];
     footer.appendChild(deleteButton);
 }
 
-function deleteCartItems() {
+function deleteCartItems(): void {
     const ids = getCartItemIds();
 
     for (const id of ids) {
@@ -111,7 +120,7 @@ function getCartItemIds(): string[] {
     return ids;
 }
 
-function toggleCart() {
+function toggleCart(): void {
     document
         .querySelector("body")!
         .classList.remove("overflow-hidden", "md:overflow-auto");

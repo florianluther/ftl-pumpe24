@@ -1,8 +1,22 @@
-"use strict";
+const Translations = {
+    "de-DE": {
+        net: "Netto",
+    },
+};
 
 const VAT = 19;
 
-function initialize() {
+type Content = {
+    offers: Offer | Offer[];
+};
+
+type Offer = {
+    url: string;
+    priceCurrency: string;
+    price: number;
+};
+
+export function initialize(): void {
     const elements = document.getElementsByTagName("script");
     const scripts = Array.from(elements);
     const filteredScripts = scripts.filter(
@@ -11,12 +25,18 @@ function initialize() {
 
     const contentScript = filteredScripts[1];
 
-    if (!contentScript) {
+    if (
+        !contentScript ||
+        !contentScript.firstChild ||
+        !contentScript.firstChild.textContent
+    ) {
         console.log(`No prices found.`);
         return;
     }
 
-    const content = JSON.parse(contentScript.firstChild.textContent.trim());
+    const content: Content = JSON.parse(
+        contentScript.firstChild.textContent.trim()
+    );
 
     if (!content) {
         console.log(`No prices found.`);
@@ -46,14 +66,14 @@ function initialize() {
     newContainer.style.color = "#777";
 
     const netPrice = document.createElement("span");
-    netPrice.innerText = netPriceFormatted;
+    netPrice.innerText = `${Translations["de-DE"].net}: ${netPriceFormatted}`;
     netPrice.style.fontWeight = "bold";
 
     newContainer.appendChild(netPrice);
     priceBox.appendChild(newContainer);
 }
 
-function getSingleNetPrice(price) {
+function getSingleNetPrice(price: number): string {
     const vatFactor = 1 + VAT / 100;
     let netPrice = price / vatFactor;
 
@@ -65,9 +85,9 @@ function getSingleNetPrice(price) {
     return netPriceFormatted;
 }
 
-function getMultiNetPrice(prices) {
+function getMultiNetPrice(prices: number[]): string {
     const netPricesFormatted = [];
-    const sortedPrices = prices.sort(function (a, b) {
+    const sortedPrices = prices.sort((a, b) => {
         return a - b;
     });
 
