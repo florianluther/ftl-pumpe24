@@ -17,6 +17,9 @@ type Item = {
     product_sku: string;
 };
 
+const red = "#e52d00";
+const darkred = "#a82b01";
+
 export function initialize(): void {
     addButtonStyle();
 
@@ -26,8 +29,7 @@ export function initialize(): void {
 }
 
 function addButtonStyle(): void {
-    const css =
-        ".btn-warn { background-color: #e52d00; } .btn-warn:hover { background-color: #a82b01; }";
+    const css = `.btn-red { background-color: ${red}; line-height: 3rem; } .btn-red:hover { background-color: ${darkred}; }`;
     const style = document.createElement("style");
     style.appendChild(document.createTextNode(css));
 
@@ -46,7 +48,7 @@ function renderDeleteButton(): void {
         deleteCartItems();
     };
     deleteButton.innerText = Translations["de-DE"].deleteShoppingCart;
-    deleteButton.className = "btn btn-warn";
+    deleteButton.className = "btn btn-red";
     deleteButton.style.display = "inline";
     deleteButton.style.margin = "6px";
 

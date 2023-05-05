@@ -17,10 +17,23 @@ type Item = {
     product_sku: string;
 };
 
+const blue = "#004893";
+const darkblue = "#003166";
+
 export function initialize(): void {
+    addButtonStyle();
+
     document.addEventListener("onCustomInitialize", () => {
         renderShareButton();
     });
+}
+
+function addButtonStyle(): void {
+    const css = `.btn-blue { background-color: ${blue}; line-height: 3rem; } .btn-blue:hover { background-color: ${darkblue}; }`;
+    const style = document.createElement("style");
+    style.appendChild(document.createTextNode(css));
+
+    document.getElementsByTagName("head")[0].appendChild(style);
 }
 
 function renderShareButton(): void {
@@ -35,7 +48,7 @@ function renderShareButton(): void {
         getShareUrl();
     };
     shareButton.innerText = Translations["de-DE"].shareShoppingCart;
-    shareButton.className = "btn btn-hover";
+    shareButton.className = "btn btn-blue";
     shareButton.style.display = "inline";
     shareButton.style.margin = "6px";
 

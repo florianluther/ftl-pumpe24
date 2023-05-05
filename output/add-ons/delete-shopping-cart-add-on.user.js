@@ -4,6 +4,8 @@ const Translations = {
         deleteShoppingCart: "Warenkorb leeren",
     },
 };
+const red = "#e52d00";
+const darkred = "#a82b01";
 function initialize() {
     addButtonStyle();
     document.addEventListener("onCustomInitialize", () => {
@@ -11,8 +13,7 @@ function initialize() {
     });
 }
 function addButtonStyle() {
-    const css =
-        ".btn-warn { background-color: #e52d00; } .btn-warn:hover { background-color: #a82b01; }";
+    const css = `.btn-red { background-color: ${red}; line-height: 3rem; } .btn-red:hover { background-color: ${darkred}; }`;
     const style = document.createElement("style");
     style.appendChild(document.createTextNode(css));
     document.getElementsByTagName("head")[0].appendChild(style);
@@ -28,7 +29,7 @@ function renderDeleteButton() {
         deleteCartItems();
     };
     deleteButton.innerText = Translations["de-DE"].deleteShoppingCart;
-    deleteButton.className = "btn btn-warn";
+    deleteButton.className = "btn btn-red";
     deleteButton.style.display = "inline";
     deleteButton.style.margin = "6px";
     footer.appendChild(deleteButton);

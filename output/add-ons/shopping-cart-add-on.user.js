@@ -5,6 +5,8 @@ const Translations = {
         editShoppingCart: "Warenkorb bearbeiten",
     },
 };
+const green = "#95C31D";
+const darkgreen = "#658514";
 function initialize() {
     addActionButtonStyle();
     renderEditButton();
@@ -13,8 +15,7 @@ function initialize() {
     });
 }
 function addActionButtonStyle() {
-    const css =
-        ".btn-action { background-color: #95C31D; } .btn-action:hover { background-color: #7EA21F; }";
+    const css = `.btn-green { background-color: ${green}; line-height: 3rem; } .btn-green:hover { background-color: ${darkgreen}; }`;
     const style = document.createElement("style");
     style.appendChild(document.createTextNode(css));
     document.getElementsByTagName("head")[0].appendChild(style);
@@ -26,7 +27,7 @@ function renderEditButton() {
     }
     const a = document.createElement("a");
     a.href = "https://www.pumpe24.de/checkout/cart/";
-    a.className = "btn btn-action";
+    a.className = "btn btn-green";
     a.style.display = "inline-flex";
     a.style.margin = "6px";
     const span = document.createElement("span");
@@ -50,6 +51,7 @@ function renderArticleNumbers() {
         const span = document.createElement("span");
         span.innerText = `${Translations["de-DE"].articleNumber}: ${element.product_sku}`;
         span.style.color = "red";
+        span.style.fontWeight = "bold";
         const item = htmlCartItems[i];
         if (!item) {
             continue;
