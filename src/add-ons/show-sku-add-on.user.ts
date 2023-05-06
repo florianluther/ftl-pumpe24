@@ -73,3 +73,5 @@ function renderProductSku(sku: string): void {
     newContainer.appendChild(copyButton);
     productInfoBlock.prepend(newContainer);
 }
+
+initialize();

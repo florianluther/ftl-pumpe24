@@ -109,3 +109,5 @@ function getMultiNetPrice(prices: number[]): string {
 
     return netPricesFormatted.join(` / `);
 }
+
+initialize();

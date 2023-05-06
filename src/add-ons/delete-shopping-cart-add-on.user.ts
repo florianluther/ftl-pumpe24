@@ -138,3 +138,5 @@ function toggleCart(): void {
         .querySelector("body")!
         .classList.remove("overflow-hidden", "md:overflow-auto");
 }
+
+initialize();

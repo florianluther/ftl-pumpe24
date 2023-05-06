@@ -97,3 +97,5 @@ function getCartItemIds(): string[] {
 
     return ids;
 }
+
+initialize();

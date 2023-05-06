@@ -21,3 +21,5 @@ export function initialize(enableLogging: boolean): void {
 
     setTimeout(onCustomInitialize, 500);
 }
+
+initialize(true);

@@ -42,3 +42,5 @@ function addFooterActionBar(): void {
 
     document.getElementsByTagName("body")[0].appendChild(footer);
 }
+
+initialize();

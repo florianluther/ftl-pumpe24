@@ -100,3 +100,5 @@ function renderArticleNumbers(): void {
         item.childNodes[3].childNodes[1].appendChild(span);
     }
 }
+
+initialize();
