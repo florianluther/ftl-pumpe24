@@ -1,3 +1,14 @@
+// ==UserScript==
+// @name         Initialize the Add-ons.
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  This script will initialize the Add-ons.
+// @author       Florian Luther
+// @match        https://www.pumpe24.de/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=pumpe24.de
+// @grant        none
+// ==/UserScript==
+
 export function initialize(enableLogging: boolean): void {
     const onCustomInitialize = function () {
         if (enableLogging) {

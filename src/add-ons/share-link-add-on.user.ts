@@ -1,3 +1,14 @@
+// ==UserScript==
+// @name         Copy the share link on all pages.
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  This script loads a URL of the current shopping cart and displays it to the user.
+// @author       Florian Luther
+// @match        https://www.pumpe24.de/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=pumpe24.de
+// @grant        none
+// ==/UserScript==
+
 const Translations = {
     "de-DE": {
         shareShoppingCart: "Warenkorb empfehlen",
