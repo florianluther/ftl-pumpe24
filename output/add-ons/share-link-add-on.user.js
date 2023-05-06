@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Copy the share link on all pages.
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  This script loads a URL of the current shopping cart and displays it to the user.
 // @author       Florian Luther
 // @match        https://www.pumpe24.de/*
@@ -23,7 +23,7 @@ function initialize() {
     });
 }
 function addButtonStyle() {
-    const css = `.btn-blue { background-color: ${blue}; line-height: 3rem; } .btn-blue:hover { background-color: ${darkblue}; }`;
+    const css = `.button-blue { background-color: ${blue}; line-height: 3rem; } .button-blue:hover { background-color: ${darkblue}; }`;
     const style = document.createElement("style");
     style.appendChild(document.createTextNode(css));
     document.getElementsByTagName("head")[0].appendChild(style);
@@ -39,7 +39,7 @@ function renderShareButton() {
         getShareUrl();
     };
     shareButton.innerText = Translations["de-DE"].shareShoppingCart;
-    shareButton.className = "btn btn-blue";
+    shareButton.className = "btn button-blue";
     shareButton.style.display = "inline";
     shareButton.style.margin = "6px";
     footer.appendChild(shareButton);

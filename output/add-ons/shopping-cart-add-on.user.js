@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Open shopping cart and show SKU.
 // @namespace    http://tampermonkey.net/
-// @version      1.1
+// @version      1.2
 // @description  This script renders a button to open the shopping cart and show all items with its SKU.
 // @author       Florian Luther
 // @match        https://www.pumpe24.de/*
@@ -25,7 +25,7 @@ function initialize() {
     });
 }
 function addActionButtonStyle() {
-    const css = `.btn-green { background-color: ${green}; line-height: 3rem; } .btn-green:hover { background-color: ${darkgreen}; }`;
+    const css = `.button-green { background-color: ${green}; line-height: 3rem; } .button-green:hover { background-color: ${darkgreen}; }`;
     const style = document.createElement("style");
     style.appendChild(document.createTextNode(css));
     document.getElementsByTagName("head")[0].appendChild(style);
@@ -41,7 +41,7 @@ function renderEditButton() {
         location.href = "https://www.pumpe24.de/checkout/cart/";
     };
     editButton.innerText = Translations["de-DE"].editShoppingCart;
-    editButton.className = "btn btn-green";
+    editButton.className = "btn button-green";
     editButton.style.display = "inline";
     editButton.style.margin = "6px";
     footer.appendChild(editButton);

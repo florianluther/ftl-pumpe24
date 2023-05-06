@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Delete all shopping cart items.
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  This script deletes all items of the current shopping cart.
 // @author       Florian Luther
 // @match        https://www.pumpe24.de/*
@@ -40,7 +40,7 @@ export function initialize(): void {
 }
 
 function addButtonStyle(): void {
-    const css = `.btn-red { background-color: ${red}; line-height: 3rem; } .btn-red:hover { background-color: ${darkred}; }`;
+    const css = `.button-red { background-color: ${red}; line-height: 3rem; } .button-red:hover { background-color: ${darkred}; }`;
     const style = document.createElement("style");
     style.appendChild(document.createTextNode(css));
 
@@ -59,7 +59,7 @@ function renderDeleteButton(): void {
         deleteCartItems();
     };
     deleteButton.innerText = Translations["de-DE"].deleteShoppingCart;
-    deleteButton.className = "btn btn-red";
+    deleteButton.className = "btn button-red";
     deleteButton.style.display = "inline";
     deleteButton.style.margin = "6px";
 
