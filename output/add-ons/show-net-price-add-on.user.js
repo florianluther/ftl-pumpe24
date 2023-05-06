@@ -80,3 +80,4 @@ function getMultiNetPrice(prices) {
     }
     return netPricesFormatted.join(` / `);
 }
+initialize();

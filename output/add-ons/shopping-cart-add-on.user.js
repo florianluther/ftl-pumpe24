@@ -69,3 +69,4 @@ function renderArticleNumbers() {
         item.childNodes[3].childNodes[1].appendChild(span);
     }
 }
+initialize();

@@ -68,3 +68,4 @@ function getCartItemIds() {
     const ids = cartItems.map((c) => c.item_id);
     return ids;
 }
+initialize();

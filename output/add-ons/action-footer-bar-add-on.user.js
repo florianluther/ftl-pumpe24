@@ -37,3 +37,4 @@ function addFooterActionBar() {
     footer.className = "sticky-footer";
     document.getElementsByTagName("body")[0].appendChild(footer);
 }
+initialize();

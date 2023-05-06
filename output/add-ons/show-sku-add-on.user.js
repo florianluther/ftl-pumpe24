@@ -58,3 +58,4 @@ function renderProductSku(sku) {
     newContainer.appendChild(copyButton);
     productInfoBlock.prepend(newContainer);
 }
+initialize();

@@ -19,3 +19,4 @@ function initialize(enableLogging) {
     };
     setTimeout(onCustomInitialize, 500);
 }
+initialize(true);
