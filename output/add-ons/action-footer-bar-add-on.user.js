@@ -1,3 +1,13 @@
+// ==UserScript==
+// @name         Add action footer bar.
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  This script adds the action footer bar.
+// @author       Florian Luther
+// @match        https://www.pumpe24.de/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=pumpe24.de
+// @grant        none
+// ==/UserScript==
 "use strict";
 function initialize() {
     addFooterStyle();

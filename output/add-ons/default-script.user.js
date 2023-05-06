@@ -8,6 +8,7 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=pumpe24.de
 // @grant        none
 // ==/UserScript==
+"use strict";
 function init() {
     const name = getName();
     console.log(`Hello from ${name}.`);

@@ -1,3 +1,13 @@
+// ==UserScript==
+// @name         Show the net price on product detail page.
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  This script calculates the net price of the current product and displays it to the user.
+// @author       Florian Luther
+// @match        https://www.pumpe24.de/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=pumpe24.de
+// @grant        none
+// ==/UserScript==
 "use strict";
 const Translations = {
     "de-DE": {

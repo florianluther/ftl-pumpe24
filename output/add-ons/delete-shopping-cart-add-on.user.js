@@ -1,3 +1,13 @@
+// ==UserScript==
+// @name         Delete all shopping cart items.
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  This script deletes all items of the current shopping cart.
+// @author       Florian Luther
+// @match        https://www.pumpe24.de/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=pumpe24.de
+// @grant        none
+// ==/UserScript==
 "use strict";
 const Translations = {
     "de-DE": {

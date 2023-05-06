@@ -1,3 +1,13 @@
+// ==UserScript==
+// @name         Open shopping cart and show SKU.
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  This script renders a button to open the shopping cart and show all items with its SKU.
+// @author       Florian Luther
+// @match        https://www.pumpe24.de/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=pumpe24.de
+// @grant        none
+// ==/UserScript==
 "use strict";
 const Translations = {
     "de-DE": {
