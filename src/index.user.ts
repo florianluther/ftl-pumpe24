@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Initialize the Add-ons.
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  This script will initialize the Add-ons.
 // @author       Florian Luther
 // @match        https://www.pumpe24.de/*
