@@ -10,10 +10,14 @@
 // ==/UserScript==
 "use strict";
 function init() {
+    const label = getLabel();
     const name = getName();
-    console.log(`Hello from ${name}.`);
+    console.log(`${label} ${name}.`);
 }
 function getName() {
     return `RawUserScript`;
+}
+function getLabel() {
+    return `Hello from`;
 }
 init();

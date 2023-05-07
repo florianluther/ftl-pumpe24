@@ -10,12 +10,17 @@
 // ==/UserScript==
 
 export function init(): void {
+    const label = getLabel();
     const name = getName();
-    console.log(`Hello from ${name}.`);
+    console.log(`${label} ${name}.`);
 }
 
 function getName(): string {
     return `RawUserScript`;
+}
+
+function getLabel(): string {
+    return `Hello from`;
 }
 
 init();
