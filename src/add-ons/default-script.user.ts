@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Default user script.
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  The description of the default user script.
 // @author       Florian Luther
 // @match        https://www.pumpe24.de/
